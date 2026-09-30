@@ -18,7 +18,7 @@ while i < len(sys.argv):
             filename = sys.argv[i]
             i += 1
 
-caminho_completo = os.path.join(*dirs) 
+caminho_completo = os.path.join(*dirs)
 os.makedirs(caminho_completo, exist_ok=True)
 
 lines = []
@@ -29,11 +29,11 @@ while True:
     lines.append(content)
 
 if caminho_completo:
-    file_path = caminho_completo
+    file_path = os.path.join(caminho_completo, filename) 
 else:
     file_path = filename
 
-with open("arquivo.txt", "a") as file:
+with open(file_path, "a") as file:
     file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
     for i, line in enumerate(lines, 1):
         file.write(f"{i} {line}\n")
