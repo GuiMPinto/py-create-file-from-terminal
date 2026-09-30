@@ -1,6 +1,5 @@
 import sys
 import os
-import argparse 
 from datetime import datetime
 
 
@@ -8,18 +7,18 @@ dirs = []
 filename = None
 i = 1  # começa em 1 (índice 0 é o nome do script)
 while i < len(sys.argv):
-    if sys.argv[i] == '-d':
+    if sys.argv[i] == "-d":
         i += 1
-        while i < len(sys.argv) and sys.argv[i] != '-f':
+        while i < len(sys.argv) and sys.argv[i] != "-f":
             dirs.append(sys.argv[i])
             i += 1
-    elif sys.argv[i] == '-f':
+    elif sys.argv[i] == "-f":
         i += 1
         if i < len(sys.argv):
             filename = sys.argv[i]
             i += 1
 
-caminho_completo = os.path.join(*dirs)  # ex: "dir1/dir2"
+caminho_completo = os.path.join(*dirs) 
 os.makedirs(caminho_completo, exist_ok=True)
 
 lines = []
@@ -28,6 +27,11 @@ while True:
     if content == "stop":
         break
     lines.append(content)
+
+if caminho_completo:
+    file_path = caminho_completo
+else:
+    file_path = filename
 
 with open("arquivo.txt", "a") as file:
     file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
