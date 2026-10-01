@@ -18,8 +18,13 @@ while i < len(sys.argv):
             filename = sys.argv[i]
             i += 1
 
-caminho_completo = os.path.join(*dirs)
+caminho_completo = os.path.join(*dirs) if dirs else ""
 os.makedirs(caminho_completo, exist_ok=True)
+
+if not filename:
+    print("Error: -f flag is required")
+    sys.exit(1)
+
 
 lines = []
 while True:
@@ -28,16 +33,13 @@ while True:
         break
     lines.append(content)
 
-if not filename:
-    print("Error: -f flag is required")
-    sys.exit(1)
-
 if caminho_completo:
     file_path = os.path.join(caminho_completo, filename)
 else:
     file_path = filename
 
 with open(file_path, "a") as file:
+
     file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
     for i, line in enumerate(lines, 1):
         file.write(f"{i} {line}\n")
