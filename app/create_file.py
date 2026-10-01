@@ -18,13 +18,12 @@ while i < len(sys.argv):
             filename = sys.argv[i]
             i += 1
 
-caminho_completo = os.path.join(*dirs) if dirs else ""
-os.makedirs(caminho_completo, exist_ok=True)
-
 if not filename:
     print("Error: -f flag is required")
     sys.exit(1)
 
+caminho_completo = os.path.join(*dirs) if dirs else ""
+os.makedirs(caminho_completo, exist_ok=True)
 
 lines = []
 while True:
