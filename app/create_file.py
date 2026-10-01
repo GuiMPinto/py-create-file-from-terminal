@@ -32,7 +32,7 @@ while True:
         break
     lines.append(content)
 
-if caminho_completo:
+if caminho_completo and caminho_completo != ".":
     file_path = os.path.join(caminho_completo, filename)
 else:
     file_path = filename
