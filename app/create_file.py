@@ -35,8 +35,8 @@ while True:
         break
     lines.append(content)
 file_path = (
-    os.path.join(caminho_completo, filename) 
-    if caminho_completo != "." 
+    os.path.join(caminho_completo, filename)
+    if caminho_completo != "."
     else filename
 )
 
