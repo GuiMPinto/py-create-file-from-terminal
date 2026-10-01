@@ -20,6 +20,7 @@ while arg_index < len(sys.argv):
 if not filename and dirs:
     caminho_completo = os.path.join(*dirs)
     os.makedirs(caminho_completo, exist_ok=True)
+    sys.exit(0)
 
 elif not filename:
     print("Error: -f flag is required")
