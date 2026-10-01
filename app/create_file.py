@@ -38,6 +38,8 @@ else:
     file_path = filename
 
 with open(file_path, "a") as file:
+    if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
+        file.write("\n")
 
     file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
     for i, line in enumerate(lines, 1):
