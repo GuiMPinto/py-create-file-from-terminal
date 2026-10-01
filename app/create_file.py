@@ -34,7 +34,12 @@ while True:
     if content == "stop":
         break
     lines.append(content)
-file_path = os.path.join(caminho_completo, filename) if caminho_completo != "." else filename
+file_path = (
+    os.path.join(caminho_completo, filename) 
+    if caminho_completo != "." 
+    else filename
+)
+
 with open(file_path, "a") as file:
     if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
         file.write("\n")
