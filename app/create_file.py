@@ -2,7 +2,8 @@ import sys
 import os
 from datetime import datetime
 
-def main():
+
+def main() -> None:
     dirs = []
     filename = None
     arg_index = 1
@@ -43,6 +44,7 @@ def main():
         file.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
         for i, line in enumerate(lines, 1):
             file.write(f"{i} {line}\n")
+
 
 if __name__ == "__main__":
     main()
