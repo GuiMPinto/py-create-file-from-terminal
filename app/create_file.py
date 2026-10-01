@@ -52,5 +52,6 @@ def main() -> None:
         for i, line in enumerate(lines, 1):
             file.write(f"{i} {line}\n")
 
+
 if __name__ == "__main__":
     main()
