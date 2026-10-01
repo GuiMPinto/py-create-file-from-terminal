@@ -22,7 +22,7 @@ if not filename:
     print("Error: -f flag is required")
     sys.exit(1)
 
-caminho_completo = os.path.join(*dirs) if dirs else ""
+caminho_completo = os.path.join(*dirs) if dirs else "."
 os.makedirs(caminho_completo, exist_ok=True)
 
 lines = []
