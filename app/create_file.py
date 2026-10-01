@@ -28,8 +28,12 @@ while True:
         break
     lines.append(content)
 
+if not filename:
+    print("Error: -f flag is required")
+    sys.exit(1)
+
 if caminho_completo:
-    file_path = os.path.join(caminho_completo, filename) 
+    file_path = os.path.join(caminho_completo, filename)
 else:
     file_path = filename
 
