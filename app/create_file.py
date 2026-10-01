@@ -4,28 +4,28 @@ from datetime import datetime
 
 dirs = []
 filename = None
-i = 1
-while i < len(sys.argv):
-    if sys.argv[i] == "-d":
-        i += 1
-        while i < len(sys.argv) and sys.argv[i] != "-f":
-            dirs.append(sys.argv[i])
-            i += 1
-    elif sys.argv[i] == "-f":
-        i += 1
-        if i < len(sys.argv):
-            filename = sys.argv[i]
-            i += 1
-# Se só passou -d sem -f, cria só os diretórios e encerra
+arg_index = 1
+while arg_index < len(sys.argv):
+    if sys.argv[arg_index] == "-d":
+        arg_index += 1
+        while arg_index < len(sys.argv) and sys.argv[arg_index] != "-f":
+            dirs.append(sys.argv[arg_index])
+            arg_index += 1
+    elif sys.argv[arg_index] == "-f":
+        arg_index += 1
+        if arg_index < len(sys.argv):
+            filename = sys.argv[arg_index]
+            arg_index += 1
+
 if not filename and dirs:
     caminho_completo = os.path.join(*dirs)
     os.makedirs(caminho_completo, exist_ok=True)
     sys.exit(0)
-# Se não passou -f, dá erro
+
 if not filename:
     print("Error: -f flag is required")
     sys.exit(1)
-# Se passou -d, usa o caminho; se não, usa diretório atual
+
 caminho_completo = os.path.join(*dirs) if dirs else "."
 os.makedirs(caminho_completo, exist_ok=True)
 lines = []
